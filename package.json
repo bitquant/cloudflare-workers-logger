@@ -1,0 +1,23 @@
+{
+  "name": "cloudflare-workers-logger",
+  "version": "0.0.1",
+  "description": "Logger for Cloudflare Workers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitquant/cloudflare-workers-logger.git"
+  },
+  "keywords": [
+    "logger",
+    "loggly"
+  ],
+  "author": "bitquant",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitquant/cloudflare-workers-logger/issues"
+  },
+  "homepage": "https://github.com/bitquant/cloudflare-workers-logger#readme"
+}

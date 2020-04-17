@@ -4,6 +4,9 @@ function init(config) {
     token = config.loggly.token;
 }
 
+// Consume body of responses to free connections
+// https://community.cloudflare.com/t/2019-9-19-workers-runtime-release-notes-concurrent-subrequest-limit/115546
+
 function log(entry, waitUntil) {
 
     let logPromise = fetch(`https://logs-01.loggly.com/inputs/${token}/tag/http/`, {
@@ -11,8 +14,8 @@ function log(entry, waitUntil) {
         method: 'POST',
         body: (typeof entry === 'object') ? JSON.stringify(entry) : entry
     })
-    .then(rsp => `Loggly: ${rsp.status} ${rsp.statusText}`)
-    .catch(err => `Loggly exception: ${err.message}`);
+    .then(rsp => rsp.text())
+    .catch(err => `${err}`);
 
     if (waitUntil) {
         waitUntil(logPromise)
